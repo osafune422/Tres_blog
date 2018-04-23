@@ -1,0 +1,10 @@
+<h3>アカウント情報変更</h3>
+
+<%= form_tag("/update/#{@user.id}") do %>
+    <p>ログインID</p>
+    <input class=signup name="login_id" value="<%= @user.login_id %>">
+    <p>パスワード</p>
+    <input class=signup placeholder="********" name="password" value="<%= @user.password %>" type="password">
+                
+    <input class="button_signup" type="submit" value="変更">
+<% end %>

@@ -1,0 +1,14 @@
+<h3>ログイン・登録</h3>
+                
+    <%= form_tag("/login") do %>
+        <p>ログインID</p>
+        <input class=signup name="login_id" value="<%= @login_id %>">
+        <p>パスワード</p>
+        <input class=signup placeholder="********" name="password" type="password" value="<%= @password %>">
+        <br>
+            
+        <input class="button_signup" type="submit" value="ログイン">
+    <% end %>
+    
+    <%= link_to("新規登録", "/signup") %>
+                
