@@ -1,4 +1,14 @@
-<h1><%= @post.title %></h1>
-<h5>名前：</h5>
-<p><%= @post.contents %></p>
+<html>
+   <body>
+        <div id="wrapper">
+            <h1><%= @post.title %></h1>
+            <h5>名前：<%= link_to(@user.name, "/mypage/#{@user.id}/#{@user.login_id}") %></h5>
+            <p><%= @post.contents %></p>
 
+            <% if @current_user.id == @user.id %>
+                <h4><%= link_to("編集", "/posts/edit/#{@post.id}") %></h4>
+            <% else %>
+                <h4><%= link_to("マイページ", "/mypage/#{@current_user.id}/#{@current_user.login_id}") %></h4>
+            <% end %>
+        </div>
+    </body>

@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .signup{
-    width:30%;
+    width:40%;
     height:35px;
     border-radius: 5px;
 }
@@ -18,4 +18,12 @@
 }
 .button_signup:hover{
   background-color: #B0E0E6;
+}
+
+.space{
+  margin-left:50px;
+}
+
+.position{
+  position:fixed; left:800px;
 }

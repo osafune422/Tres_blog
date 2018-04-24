@@ -1,0 +1,17 @@
+<html>
+   <body>
+        <div id="wrapper">
+            <h3>投稿記事編集</h3>
+
+            <%= form_tag("/posts/update/#{@post.id}", {method: :post}) do %>
+                <p>Title</p>
+                <input class=signup name="title" value="<%= @post.title %>">
+                <p>Content</p>
+                <textarea name="contents"><%= @post.contents %></textarea>
+            
+                <input class="button_signup" type="submit" value="変更">
+            <% end %>
+            
+            <%= link_to("削除", "/delete/#{@post.id}", {method: :post}) %>
+        </div>
+    </body>

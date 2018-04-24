@@ -1,15 +1,28 @@
-<h3>アカウント新規登録</h3>
+<!DOCTYPE html>
+<html>
+   <body>
+        <div id="wrapper">
+            <h3>アカウント新規登録</h3>
 
-<%= form_tag("/create") do %>
-    <p>お名前</p>
-    <input class=signup name="name" >
-    <p>ログインID</p>
-    <input class=signup name="login_id" >
-    <p>パスワード</p>
-    <input class=signup placeholder="********" name="password" type="password">
-    <br>
+            <% @user.errors.full_messages.each do |message| %>
+                <div class="form-error">
+                <%= message %>
+                </div>
+            <% end %>
+
+            <%= form_tag("/create") do %>
+                <p>お名前</p>
+                <input class=signup name="name" >
+                <p>ログインID</p>
+                <input class=signup name="login_id" >
+                <p>パスワード</p>
+                <input class=signup placeholder="********" name="password" type="password">
+                <br>
     
-    <input class="button_signup" type="submit" value="次へ">
-    <% end %>
+                <input class="button_signup" type="submit" value="次へ">
+            <% end %>
     
-    <%= link_to("ログイン", "/login") %>
+            <%= link_to("ログイン", "/login") %>
+        </div>
+    </body>
+            

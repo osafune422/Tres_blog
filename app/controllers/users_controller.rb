@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user, {only:[:mypage, :edit]}       #ログインなしの時
+  before_action :forbid_login_user, {only:[:new, :create, :login_form, :login]}       #ログインありの時
+  before_action :ensure_correct_user, {only:[:edit, :update]}      #ユーザーのidが異なる時
+  
   def mypage
     @user = User.find_by(id: params[:id])
   end
@@ -17,7 +21,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id]=@user.id
       flash[:notice] = "ユーザー登録が完了しました"
-      redirect_to("/mypage/#{@user.id}")
+      redirect_to("/mypage/#{@user.id}/#{@user.login_id}")
     else
       render("users/new")
     end
@@ -34,7 +38,7 @@ class UsersController < ApplicationController
     
     if @user.save
       flash[:notice] = "ユーザー情報を編集しました"
-      redirect_to("/mypage/#{@user.id}")
+      redirect_to("/mypage/#{@user.id}/#{@user.login_id}")
     else
       render("users/edit")
     end
@@ -50,7 +54,7 @@ class UsersController < ApplicationController
     if @user
       session[:user_id]=@user.id
       flash[:notice]="ログインしました"
-      redirect_to("/mypage/#{@user.id}")
+      redirect_to("/mypage/#{@user.id}/#{@user.login_id}")
     else
       @error_message="メールアドレスまたはパスワードが間違っています"
       @login_id=params[:login_id]
@@ -63,6 +67,13 @@ class UsersController < ApplicationController
     session[:user_id]=nil
     flash[:notice]="ログアウトしました"
     redirect_to("/login")
+  end
+  
+  def ensure_correct_user
+    if @current_user.id != params[:id].to_i
+      flash[:notice] = "権限がありません"
+      redirect_to("/mypage/#{@current_user.id}/#{@current_user.login_id}")
+    end
   end
   
 end

@@ -1,10 +1,22 @@
-<h3>アカウント情報変更</h3>
+<!DOCTYPE html>
+<html>
+   <body>
+        <div id="wrapper">
+            <h3>アカウント情報変更</h3>
 
-<%= form_tag("/update/#{@user.id}") do %>
-    <p>ログインID</p>
-    <input class=signup name="login_id" value="<%= @user.login_id %>">
-    <p>パスワード</p>
-    <input class=signup placeholder="********" name="password" value="<%= @user.password %>" type="password">
+            <% @user.errors.full_messages.each do |message| %>
+                <div class="form-error">
+                <%= message %>
+                </div>
+            <% end %>
+
+            <%= form_tag("/update/#{@user.id}") do %>
+                <p>ログインID</p>
+                <input class=signup name="login_id" value="<%= @user.login_id %>">
+                <p>パスワード</p>
+                <input class=signup placeholder="********" name="password" value="<%= @user.password %>">
                 
-    <input class="button_signup" type="submit" value="変更">
-<% end %>
+                <input class="button_signup" type="submit" value="変更">
+            <% end %>
+        </div>
+    </body>

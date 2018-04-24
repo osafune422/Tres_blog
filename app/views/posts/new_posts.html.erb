@@ -1,0 +1,15 @@
+<html>
+   <body>
+        <div id="wrapper">
+            <h3>記事編集</h3>
+
+            <%= form_tag("/write") do %>
+                <p>Title</p>
+                <input class=signup name="title">
+                <p>Content</p>
+                <textarea name="contents"></textarea>
+                
+                <input class="button_signup" type="submit" value="投稿">
+            <% end %>
+        </div>
+    </body>

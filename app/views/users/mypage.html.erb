@@ -1,6 +1,28 @@
-<h1>アカウント情報</h1>
-<h3>名前：<%= @user.name %></h3>
-<p><%= @user.login_id %></p>
-<p><%= @user.password %></p>
-<%= link_to("編集", "/edit/#{@user.id}") %>
-<%= link_to("ログアウト", "/logout", {method: :post}) %>
+<!DOCTYPE html>
+<html>
+   <body>
+        <div id="wrapper">
+            <h3>管理者：<%= @user.name %></h3>
+            
+            <% if @current_user.id == @user.id %>
+                <i><%= link_to("アカウント情報編集", "/edit/#{@user.id}") %></i>
+                <i class="space"><%= link_to("ログアウト", "/logout", {method: :post}) %></i><br><br><br>
+                <%= link_to("新規投稿", "/posts/new") %>
+            <% else %>
+                <i><%= link_to("マイページ", "/mypage/#{@current_user.id}/#{@current_user.login_id}") %></i>
+            <% end %>
+            
+            <br>
+
+            <% @user.posts.each do |post| %>
+                <br>
+                <i><%= post.date %></i>
+                <i class="space"><%= link_to(post.title, "/show/#{post.id}") %></i>
+                <% if @current_user.id == @user.id %>
+                    <i class="position"><%= link_to("編集", "/posts/edit/#{post.id}") %></i>
+                <% end %>
+            <% end %>
+        </div>
+    </body>
+
+

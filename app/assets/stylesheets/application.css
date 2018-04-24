@@ -13,6 +13,16 @@
  *= require_tree .
  *= require_self
  */
+.header{
+    margin-left: 200px;
+    margin-right: 200px;
+    height:50px;
+}
+
+.form-error{
+    color:red;
+}
+
 a{ 
     text-decoration: none;
     color: #C0C0C0;
@@ -21,3 +31,21 @@ a:hover{
     text-decoration: none;
     color: #59b1eb;
 }
+
+h4{
+    text-align: right;
+}
+
+.flash {
+  padding: 10px 0;
+  color: white;
+  background: rgb(251, 170, 88);
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  z-index: 10;
+  width: 100%;
+  border-radius: 0 0 2px 2px;
+  font-size: 14px;
+}
+

@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  get 'posts/show/:id', to: 'posts#show'
+  get 'show/:id', to: 'posts#show'
+  get 'posts/new', to: 'posts#new_posts'
+  post 'write', to: 'posts#write'
+  get 'posts/edit/:id', to: 'posts#edit_posts'
+  post 'posts/update/:id', to: 'posts#update_posts'
+  post 'delete/:id', to: 'posts#delete'
 
-  get 'mypage/:id', to:'users#mypage'
+  get 'mypage/:id/:login_id', to:'users#mypage'
   get 'edit/:id', to:'users#edit'
   post 'update/:id', to:'users#update'
   get 'signup', to:'users#new'
