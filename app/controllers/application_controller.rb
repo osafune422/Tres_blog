@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   def forbid_login_user
     if @current_user
       flash[:notice]="すでにログインしています"
-      redirect_to("/mypage/#{@user.id}")
+      redirect_to("/mypage/#{@current_user.id}")
     end
   end
   
