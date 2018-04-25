@@ -1,0 +1,13 @@
+<html>
+   <body>
+        <div id="wrapper">
+            <h1>以下の記事を削除しますか。</h1>
+            <h4><i><%= link_to("削除", "/delete/#{@post.id}") %></i>
+            <i class="space"><%= link_to("キャンセル", "/mypage/#{@user.id}/#{@user.login_id}") %></i>
+            
+            <h2><%= @post.title %></h2>
+            <h5>名前：<%= @user.name %></h5>
+            <p><%= @post.contents %></p>
+
+        </div>
+    </body>

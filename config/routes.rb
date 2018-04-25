@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'write', to: 'posts#write'
   get 'posts/edit/:id', to: 'posts#edit_posts'
   post 'posts/update/:id', to: 'posts#update_posts'
+  get 'posts/delete/:id', to: 'posts#delete_posts'
   post 'delete/:id', to: 'posts#delete'
 
   get 'mypage/:id/:login_id', to:'users#mypage'

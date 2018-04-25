@@ -8,6 +8,6 @@ class User < ApplicationRecord
     
     def posts
         @post=Post.where(user_id: self.id)
-        return @post.all.order("date DESC")
+        return @post.all.order("created_at DESC")
     end
 end

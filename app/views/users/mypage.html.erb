@@ -20,6 +20,7 @@
                 <i class="space"><%= link_to(post.title, "/show/#{post.id}") %></i>
                 <% if @current_user.id == @user.id %>
                     <i class="position"><%= link_to("編集", "/posts/edit/#{post.id}") %></i>
+                    <i class="position1"><%= link_to("削除", "/posts/delete/#{post.id}") %></i>
                 <% end %>
             <% end %>
         </div>

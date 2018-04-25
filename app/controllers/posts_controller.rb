@@ -17,7 +17,7 @@ class PostsController < ApplicationController
       contents: params[:contents],
       date: Date.today
       )
-
+    
     if @post.save
       flash[:notice] = "新規記事をアップしました"
       redirect_to("/show/#{@post.id}")
@@ -41,6 +41,11 @@ class PostsController < ApplicationController
     else
       render("posts/edit_posts")
     end
+  end
+  
+  def delete_posts
+    @post = Post.find_by(id: params[:id])
+    @user = @post.user
   end
   
   def delete
