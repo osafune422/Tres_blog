@@ -54,7 +54,7 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:password])
       session[:user_id]=@user.id
       flash[:notice]="ログインしました"
-      redirect_to("/mypage/#{@user.id}/#{@user.login_id}")
+      redirect_to("/mypage/#{@current_user.id}/#{@current_user.login_id}")
     else
       @error_message="メールアドレスまたはパスワードが間違っています"
       @login_id=params[:login_id]

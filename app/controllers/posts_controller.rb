@@ -34,10 +34,11 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     @post.title = params[:title]
     @post.contents = params[:contents]
+    @user = @post.user
     
     if @post.save
-      flash[:notice] = "変更記事をアップしました"
-      redirect_to("/show/#{@post.id}")
+      flash.now[:notice] = "変更記事をアップしました"
+      render("posts/show")
     else
       render("posts/edit_posts")
     end
