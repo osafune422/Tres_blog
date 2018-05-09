@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  <%= javascript_include_tag "application" %>
   <head>
     <title>ブログ</title>
     <%= csrf_meta_tags %>
@@ -10,7 +11,7 @@
   </head>
   
   <% if flash[:notice] %>
-      <div class="flash">
+      <div id="notice" class="flash">
         <%= flash[:notice] %>
       </div>
   <% end %>
@@ -24,6 +25,16 @@
   $(function() {
     setTimeout(function() {
       $('#notice').fadeOut("slow")
-    }, 800);
+    }, 2000);
   });
+  
+//  window.addEventListener("load", function(){
+//    myFunction()
+//  })
+  
+//  function myFunction() {
+//    var x = document.getElementById("notice")
+//      setTimeout(function(){ x.classList.add("show"); }, 3000);
+//  }
+ 
 </script>
