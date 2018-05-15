@@ -6,5 +6,4 @@ class User < ApplicationRecord
     validates :name, {presence: true}
     # login_idのエラー条件
     validates :login_id, {presence: true, uniqueness: true}
-    
 end
